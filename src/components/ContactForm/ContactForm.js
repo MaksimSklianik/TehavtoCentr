@@ -7,8 +7,7 @@ import {
     MenuItem,
     Container,
     Alert,
-    Snackbar,
-    Grid // Добавлен импорт Grid
+    Snackbar
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
@@ -26,6 +25,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
             borderColor: theme.palette.primary.dark,
         },
     },
+    marginBottom: '20px',
+    width: '100%'
 }));
 
 const validationSchema = yup.object().shape({
@@ -73,7 +74,6 @@ const ContactForm = () => {
             await validationSchema.validate(formData, { abortEarly: false });
             setErrors({});
 
-            // Здесь будет реальная отправка данных
             console.log('Форма отправлена:', formData);
             setOpenSuccess(true);
             setFormData({
@@ -102,16 +102,30 @@ const ContactForm = () => {
     };
 
     return (
-        <Container maxWidth="md" sx={{ py: 4 }}>
+        <Container maxWidth="sm" sx={{ py: 4 }}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <Typography variant="h4" gutterBottom sx={{ color: 'primary.dark', fontWeight: 700 }}>
+                <Typography
+                    variant="h4"
+                    gutterBottom
+                    sx={{
+                        color: 'primary.dark',
+                        fontWeight: 700,
+                        textAlign: 'center'
+                    }}
+                >
                     📨 Связаться с нами
                 </Typography>
-                <Typography paragraph sx={{ mb: 8 }}>
+                <Typography
+                    paragraph
+                    sx={{
+                        mb: 4,
+                        textAlign: 'center'
+                    }}
+                >
                     Оставьте заявку на обслуживание или задайте вопрос нашим специалистам
                 </Typography>
             </motion.div>
@@ -123,126 +137,116 @@ const ContactForm = () => {
                     mt: 3,
                     p: 4,
                     borderRadius: 1,
-                    boxShadow: 20,
-                    background: 'black-white'
+                    boxShadow: 3,
+                    backgroundColor: 'background.paper',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
                 }}
             >
-                <Grid container spacing={3}>
-                    <Grid xs={12} md={6}>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                        >
-                            <StyledTextField
-                                fullWidth
-                                label="Имя *"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                error={!!errors.name}
-                                helperText={errors.name}
-                            />
-                        </motion.div>
-                    </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{ width: '100%' }}
+                >
+                    <StyledTextField
+                        label="Имя *"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        error={!!errors.name}
+                        helperText={errors.name}
+                    />
+                </motion.div>
 
-                    <Grid xs={12} md={6}>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                        >
-                            <StyledTextField
-                                fullWidth
-                                label="Телефон *"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                placeholder="+79991234567"
-                                error={!!errors.phone}
-                                helperText={errors.phone || "Формат: +79991234567"}
-                            />
-                        </motion.div>
-                    </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{ width: '100%' }}
+                >
+                    <StyledTextField
+                        label="Телефон *"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+79991234567"
+                        error={!!errors.phone}
+                        helperText={errors.phone || "Формат: +79991234567"}
+                    />
+                </motion.div>
 
-                    <Grid xs={12}>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                        >
-                            <StyledTextField
-                                fullWidth
-                                label="Email"
-                                name="email"
-                                type="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                error={!!errors.email}
-                                helperText={errors.email}
-                            />
-                        </motion.div>
-                    </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{ width: '100%' }}
+                >
+                    <StyledTextField
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={!!errors.email}
+                        helperText={errors.email}
+                    />
+                </motion.div>
 
-                    <Grid xs={12}>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ type: 'spring', stiffness: 200 }}
-                        >
-                            <StyledTextField
-                                select
-                                fullWidth
-                                label="Выберите услугу *"
-                                name="service"
-                                value={formData.service}
-                                onChange={handleChange}
-                                error={!!errors.service}
-                                helperText={errors.service}
-                            >
-                                {services.map((service) => (
-                                    <MenuItem key={service} value={service}>
-                                        {service}
-                                    </MenuItem>
-                                ))}
-                            </StyledTextField>
-                        </motion.div>
-                    </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 200 }}
+                    style={{ width: '100%' }}
+                >
+                    <StyledTextField
+                        select
+                        label="Выберите услугу *"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        error={!!errors.service}
+                        helperText={errors.service}
+                    >
+                        {services.map((service) => (
+                            <MenuItem key={service} value={service}>
+                                {service}
+                            </MenuItem>
+                        ))}
+                    </StyledTextField>
+                </motion.div>
 
-                    <Grid xs={12}>
-                        <motion.div
-                            whileHover={{ scale: 1.01 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                        >
-                            <StyledTextField
-                                fullWidth
-                                label="Сообщение"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                multiline
-                                rows={4}
-                            />
-                        </motion.div>
-                    </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{ width: '100%' }}
+                >
+                    <StyledTextField
+                        label="Сообщение"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        multiline
+                        rows={4}
+                    />
+                </motion.div>
 
-                    <Grid xs={12}>
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                size="large"
-                                fullWidth
-                                sx={{
-                                    py: 2,
-                                    fontSize: '1.1rem',
-                                    background: 'linear-gradient(45deg, #1976d2 0%, #263238 100%)'
-                                }}
-                            >
-                                Отправить заявку
-                            </Button>
-                        </motion.div>
-                    </Grid>
-                </Grid>
+                <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ width: '100%', marginTop: '20px' }}
+                >
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        sx={{
+                            py: 2,
+                            fontSize: '1.1rem',
+                            background: 'linear-gradient(45deg, #1976d2 0%, #263238 100%)'
+                        }}
+                    >
+                        Отправить заявку
+                    </Button>
+                </motion.div>
             </Box>
 
             <Snackbar

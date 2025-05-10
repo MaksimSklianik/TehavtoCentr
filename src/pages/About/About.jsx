@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, Box, Paper, Fade, Grow } from '@mui/material';
+import { Container, Grid, Typography, Box, Paper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
@@ -25,83 +25,225 @@ const About = () => {
         { value: '153.7%', label: 'Рост выручки', emoji: '🚀' }
     ];
 
+    const history = [
+        { year: '2010', event: 'Основание компании' },
+        { year: '2014', event: 'Открытие второго филиала' },
+        { year: '2018', event: 'Сертификация по международным стандартам' },
+        { year: '2023', event: 'Запуск мобильного приложения' }
+    ];
+
+    const certificates = ['ISO 9001', 'Официальный дилер', 'Экологический стандарт'];
+
     return (
         <Box component="section" id="about" sx={{
             py: 8,
-            background: theme.palette.background.default
+            background: theme.palette.background.default,
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%'
         }}>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%'
+            }}>
+                {/* Заголовок секции */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
+                    style={{ width: '100%' }}
                 >
                     <Typography variant="h3" component="h2" align="center" gutterBottom sx={{
                         fontWeight: 700,
                         mb: 6,
-                        color: theme.palette.primary.dark
+                        color: theme.palette.primary.dark,
+                        width: '100%'
                     }}>
                         О компании
                     </Typography>
                 </motion.div>
 
-                <Grid container spacing={6} alignItems="center">
-                    <Grid item xs={12} md={6}>
+                {/* Основной контент */}
+                <Grid container spacing={6} justifyContent="center" sx={{ width: '100%' }}>
+                    {/* Левая колонка - описание и статистика */}
+                    <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
+                            style={{ width: '100%', maxWidth: '600px' }}
                         >
-                            <Typography variant="body1" paragraph sx={{ mb: 3 }}>
-                                <Box component="span" sx={{ fontSize: '1.2rem', mr: 1 }}>🏢</Box>
-                                ООО «Техавтоцентр» является юридическим лицом с ограниченной ответственностью и владеет предприятием по обслуживанию автомобилей.
+                            <Typography variant="body1" paragraph sx={{ mb: 3, fontSize: '1.1rem', textAlign: 'center' }}>
+                                <Box component="span" sx={{ fontSize: '1.3rem', mr: 1 }}>🏢</Box>
+                                ООО «Техавтоцентр» - ведущий автосервис с 10-летним опытом.
                             </Typography>
-                            <Typography variant="body1" paragraph>
-                                <Box component="span" sx={{ fontSize: '1.2rem', mr: 1 }}>🔧</Box>
-                                Мы выполняем широкий спектр операций, включая те, которые недоступны для многих других сервисных станций.
-                                Наши специалисты проводят комплексную компьютерную диагностику и выполняют сложные задачи,
-                                требующие высококвалифицированных техников.
+                            <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', textAlign: 'center' }}>
+                                <Box component="span" sx={{ fontSize: '1.3rem', mr: 1 }}>🔧</Box>
+                                Наш сервисный центр оснащен современным диагностическим оборудованием.
                             </Typography>
-                        </motion.div>
 
-                        <Grid container spacing={2} sx={{ mt: 4 }}>
-                            {stats.map((stat, index) => (
-                                <Grid item xs={12} sm={6} key={index}>
+                            {/* Блок статистики */}
+                            <Grid container spacing={2} justifyContent="center" sx={{ mt: 4 }}>
+                                {stats.map((stat, index) => (
+                                    <Grid item xs={12} sm={6} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                        <motion.div
+                                            whileHover={{ scale: 1.05 }}
+                                            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                                            style={{ width: '100%', maxWidth: '250px' }}
+                                        >
+                                            <StatCard elevation={3}>
+                                                <Typography variant="h4" component="div" sx={{
+                                                    fontWeight: 700,
+                                                    mb: 1,
+                                                    color: theme.palette.primary.main
+                                                }}>
+                                                    {stat.value}
+                                                </Typography>
+                                                <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                    <Box component="span" sx={{ mr: 1, fontSize: '1.2rem' }}>{stat.emoji}</Box>
+                                                    {stat.label}
+                                                </Typography>
+                                            </StatCard>
+                                        </motion.div>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </motion.div>
+                    </Grid>
+
+                    {/* Правая колонка - миссия и сертификаты */}
+                    <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Box sx={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                            {/* Блок миссии */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                                style={{ width: '100%' }}
+                            >
+                                <Paper sx={{
+                                    p: 4,
+                                    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+                                    color: theme.palette.primary.contrastText,
+                                    borderRadius: theme.shape.borderRadius,
+                                    textAlign: 'center'
+                                }}>
+                                    <Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
+                                        Наша миссия
+                                    </Typography>
+                                    <Typography paragraph sx={{ textAlign: 'center' }}>
+                                        Обеспечивать клиентам профессиональный сервис.
+                                    </Typography>
+                                    <Typography variant="h5" sx={{ mt: 4, mb: 2, textAlign: 'center' }}>
+                                        Наши ценности:
+                                    </Typography>
+                                    <Box sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        '& li': {
+                                            mb: 1,
+                                            textAlign: 'center',
+                                            listStyleType: 'none'
+                                        }
+                                    }}>
+                                        <Box component="ul" sx={{ pl: 0 }}>
+                                            <li><Typography>Качество работ</Typography></li>
+                                            <li><Typography>Прозрачность</Typography></li>
+                                            <li><Typography>Клиентоориентированность</Typography></li>
+                                        </Box>
+                                    </Box>
+                                </Paper>
+                            </motion.div>
+
+                            {/* Блок сертификатов - упрощённый стиль */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                style={{ width: '100%' }}
+                            >
+                                <Box sx={{ textAlign: 'center' }}>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+                                        Наши сертификаты
+                                    </Typography>
+                                    <Grid container spacing={2} justifyContent="center">
+                                        {certificates.map((cert, i) => (
+                                            <Grid item xs={12} sm={4} key={i} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                                <Typography
+                                                    sx={{
+                                                        p: 2,
+                                                        width: '100%',
+                                                        textAlign: 'center',
+                                                        fontWeight: 500
+                                                    }}
+                                                >
+                                                    {cert}
+                                                </Typography>
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                </Box>
+                            </motion.div>
+                        </Box>
+                    </Grid>
+                </Grid>
+
+                {/* Блок истории компании - теперь горизонтальный */}
+                <Box sx={{
+                    mt: 8,
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        style={{ width: '100%' }}
+                    >
+                        <Typography variant="h4" align="center" gutterBottom sx={{
+                            mb: 4,
+                            fontWeight: 700
+                        }}>
+                            История компании
+                        </Typography>
+                        <Grid container spacing={4} justifyContent="center">
+                            {history.map((item, index) => (
+                                <Grid item xs={12} sm={6} md={3} key={index}>
                                     <motion.div
                                         whileHover={{ scale: 1.05 }}
-                                        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                                        style={{ height: '100%' }}
                                     >
-                                        <StatCard elevation={3}>
-                                            <Typography variant="h4" component="div" sx={{
-                                                fontWeight: 700,
-                                                mb: 1,
-                                                color: theme.palette.primary.main
+                                        <Paper sx={{
+                                            p: 3,
+                                            height: '100%',
+                                            textAlign: 'center',
+                                            borderRadius: theme.shape.borderRadius,
+                                            background: theme.palette.grey[100]
+                                        }}>
+                                            <Typography variant="h5" color="primary" sx={{
+                                                fontWeight: 600,
+                                                mb: 2
                                             }}>
-                                                {stat.value}
+                                                {item.year}
                                             </Typography>
-                                            <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                <Box component="span" sx={{ mr: 1 }}>{stat.emoji}</Box>
-                                                {stat.label}
+                                            <Typography variant="body1">
+                                                {item.event}
                                             </Typography>
-                                        </StatCard>
+                                        </Paper>
                                     </motion.div>
                                 </Grid>
                             ))}
                         </Grid>
-                    </Grid>
-
-                    <Grid item xs={12} md={6}>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                        >
-                            <Box
-
-                            />
-                        </motion.div>
-                    </Grid>
-                </Grid>
+                    </motion.div>
+                </Box>
             </Container>
         </Box>
     );

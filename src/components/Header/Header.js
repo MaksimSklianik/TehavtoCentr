@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 
 const StyledAppBar = styled(AppBar)({
@@ -31,20 +31,39 @@ const NavButton = styled(Button)(({ theme }) => ({
 }));
 
 const Header = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLogoClick = (e) => {
+        if (location.pathname === '/') {
+            // Если уже на главной, скроллим наверх
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            // Если на другой странице, переходим на главную
+            navigate('/', { replace: true });
+        }
+    };
+
     return (
         <StyledAppBar position="sticky">
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
-                    {/* Обернули логотип в RouterLink для перехода на главную */
+                    {/* Логотип с кастомным обработчиком клика */}
                     <Box
-                        component={RouterLink}
-                        to="/"
+                        component="a"
+                        href="/"
+                        onClick={handleLogoClick}
                         sx={{
                             flexGrow: 1,
                             display: 'flex',
                             alignItems: 'center',
                             textDecoration: 'none',
-                            color: 'inherit'
+                            color: 'inherit',
+                            '&:hover': {
+                                opacity: 0.8
+                            },
+                            cursor: 'pointer'
                         }}
                     >
                         <Box component="span" sx={{ mr: 1 }}>🚗</Box>
@@ -56,13 +75,13 @@ const Header = () => {
                         >
                             ТА ООО «Техавтоцентр»
                         </Typography>
-
                     </Box>
-                    }
+
+                    {/* Навигационные кнопки */}
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <NavButton component={RouterLink} to="/services">Услуги</NavButton>
                         <NavButton component={RouterLink} to="/about">О компании</NavButton>
-                        <NavButton component={RouterLink} to="/contact">Контакты</NavButton>
+                        <NavButton component={RouterLink} to="/contacts">Контакты</NavButton>
                     </Box>
                 </Toolbar>
             </Container>

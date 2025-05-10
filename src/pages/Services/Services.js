@@ -1,7 +1,6 @@
 import React from 'react';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
-import { Container, Typography, Grid } from '@mui/material';
-
+import { Container, Typography, Grid, Box } from '@mui/material';
 
 const services = [
     {
@@ -32,22 +31,41 @@ const services = [
 
 const Services = () => {
     return (
-        <Container sx={{ py: 8 }}>
-            <Typography variant="h2" align="center" gutterBottom>
-                Наши услуги
-            </Typography>
-            <Typography variant="subtitle1" align="center" paragraph sx={{ mb: 6 }}>
-                ООО «Техавтоцентр» предлагает полный спектр услуг по обслуживанию и ремонту автомобилей
-            </Typography>
+        <Container maxWidth="xl" sx={{
+            display: 'flex',
+            minHeight: '100vh',
+            alignItems: 'center',
+            bgcolor: 'background.default',
+            py: 8
+        }}>
+            <Container maxWidth="md">
+                <Box sx={{
+                    textAlign: 'center',
+                    mb: 6
+                }}>
+                    <Typography variant="h2" gutterBottom>
+                        Наши услуги
+                    </Typography>
+                    <Typography variant="subtitle1" paragraph>
+                        ООО «Техавтоцентр» предлагает полный спектр услуг по обслуживанию и ремонту автомобилей
+                    </Typography>
+                </Box>
 
-            <Grid container spacing={4}>
-                {services.map((service, index) => (
-                    <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
-                        <ServiceCard {...service} />
-                    </Grid>
-                ))}
-            </Grid>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 4
+                }}>
+                    {services.map((service, index) => (
+                        <Box key={index} sx={{ width: '100%', maxWidth: '600px' }}>
+                            <ServiceCard {...service} />
+                        </Box>
+                    ))}
+                </Box>
+            </Container>
         </Container>
     );
 };
+
 export default Services;
