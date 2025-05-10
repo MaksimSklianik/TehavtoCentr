@@ -39,7 +39,7 @@ const validationSchema = yup.object().shape({
     message: yup.string()
 });
 
-const ContactForm = () => {
+const ContactForm = ({ onSuccess }) => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -83,6 +83,11 @@ const ContactForm = () => {
                 service: '',
                 message: ''
             });
+
+            // Вызываем колбэк onSuccess после успешной отправки
+            if (onSuccess) {
+                onSuccess();
+            }
         } catch (err) {
             const validationErrors = {};
             err.inner.forEach(error => {

@@ -9,6 +9,13 @@ const Hero = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // Функция, которая будет вызвана после успешной отправки формы
+    const handleFormSubmitSuccess = () => {
+        setTimeout(() => {
+            handleClose();
+        }, 2000); // Закрытие через 2 секунды
+    };
+
     return (
         <Box
             component="section"
@@ -97,7 +104,8 @@ const Hero = () => {
                     }}
                 >
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <ContactForm />
+                        {/* Передаем колбэк для обработки успешной отправки формы */}
+                        <ContactForm onSuccess={handleFormSubmitSuccess} />
                     </Box>
                 </Container>
             </Modal>
