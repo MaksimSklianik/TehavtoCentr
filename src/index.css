@@ -1,0 +1,46 @@
+/* Базовые стили */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 2.5rem;
+}
+
+/* Анимации */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .MuiContainer-root {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .MuiTypography-h3 {
+        font-size: 1.8rem !important;
+    }
+
+    .service-card {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .MuiTypography-h3 {
+        font-size: 1.5rem !important;
+    }
+
+    .MuiButton-root {
+        width: 100%;
+    }
+}
