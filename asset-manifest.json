@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tehavtocentr/static/css/main.21bb7f5d.css",
-    "main.js": "/tehavtocentr/static/js/main.cf348c58.js",
-    "static/js/453.c7bf205c.chunk.js": "/tehavtocentr/static/js/453.c7bf205c.chunk.js",
-    "index.html": "/tehavtocentr/index.html",
-    "main.21bb7f5d.css.map": "/tehavtocentr/static/css/main.21bb7f5d.css.map",
-    "main.cf348c58.js.map": "/tehavtocentr/static/js/main.cf348c58.js.map",
-    "453.c7bf205c.chunk.js.map": "/tehavtocentr/static/js/453.c7bf205c.chunk.js.map"
+    "main.css": "/TehavtoCentr/static/css/main.21bb7f5d.css",
+    "main.js": "/TehavtoCentr/static/js/main.aeb8c0ee.js",
+    "static/js/453.c7bf205c.chunk.js": "/TehavtoCentr/static/js/453.c7bf205c.chunk.js",
+    "index.html": "/TehavtoCentr/index.html",
+    "main.21bb7f5d.css.map": "/TehavtoCentr/static/css/main.21bb7f5d.css.map",
+    "main.aeb8c0ee.js.map": "/TehavtoCentr/static/js/main.aeb8c0ee.js.map",
+    "453.c7bf205c.chunk.js.map": "/TehavtoCentr/static/js/453.c7bf205c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21bb7f5d.css",
-    "static/js/main.cf348c58.js"
+    "static/js/main.aeb8c0ee.js"
   ]
 }
