@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tehavtocentr/static/css/main.21bb7f5d.css",
-    "main.js": "/tehavtocentr/static/js/main.c644ae5d.js",
+    "main.js": "/tehavtocentr/static/js/main.cf348c58.js",
     "static/js/453.c7bf205c.chunk.js": "/tehavtocentr/static/js/453.c7bf205c.chunk.js",
     "index.html": "/tehavtocentr/index.html",
     "main.21bb7f5d.css.map": "/tehavtocentr/static/css/main.21bb7f5d.css.map",
-    "main.c644ae5d.js.map": "/tehavtocentr/static/js/main.c644ae5d.js.map",
+    "main.cf348c58.js.map": "/tehavtocentr/static/js/main.cf348c58.js.map",
     "453.c7bf205c.chunk.js.map": "/tehavtocentr/static/js/453.c7bf205c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21bb7f5d.css",
-    "static/js/main.c644ae5d.js"
+    "static/js/main.cf348c58.js"
   ]
 }
