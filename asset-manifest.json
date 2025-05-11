@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.21bb7f5d.css",
-    "main.js": "./static/js/main.8ed28726.js",
-    "static/js/453.c7bf205c.chunk.js": "./static/js/453.c7bf205c.chunk.js",
-    "index.html": "./index.html",
-    "main.21bb7f5d.css.map": "./static/css/main.21bb7f5d.css.map",
-    "main.8ed28726.js.map": "./static/js/main.8ed28726.js.map",
-    "453.c7bf205c.chunk.js.map": "./static/js/453.c7bf205c.chunk.js.map"
+    "main.css": "/TehavtoCentr/static/css/main.21bb7f5d.css",
+    "main.js": "/TehavtoCentr/static/js/main.f0fad381.js",
+    "static/js/453.c7bf205c.chunk.js": "/TehavtoCentr/static/js/453.c7bf205c.chunk.js",
+    "index.html": "/TehavtoCentr/index.html",
+    "main.21bb7f5d.css.map": "/TehavtoCentr/static/css/main.21bb7f5d.css.map",
+    "main.f0fad381.js.map": "/TehavtoCentr/static/js/main.f0fad381.js.map",
+    "453.c7bf205c.chunk.js.map": "/TehavtoCentr/static/js/453.c7bf205c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21bb7f5d.css",
-    "static/js/main.8ed28726.js"
+    "static/js/main.f0fad381.js"
   ]
 }
